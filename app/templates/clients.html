@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Клиенты</h1>
+
+<div class="panel">
+    <h2>Добавить клиента</h2>
+    <form action="/clients/add" method="post" class="form">
+        <input name="name" placeholder="Название организации" required>
+        <input name="contact_person" placeholder="Контактное лицо">
+        <input name="phone" placeholder="Телефон" required>
+        <input name="email" placeholder="Email">
+        <button type="submit">Сохранить</button>
+    </form>
+</div>
+
+<div class="panel">
+    <h2>Список клиентов</h2>
+    <table>
+        <tr><th>ID</th><th>Название</th><th>Контактное лицо</th><th>Телефон</th><th>Email</th></tr>
+        {% for client in clients %}
+        <tr>
+            <td>{{ client.id }}</td>
+            <td>{{ client.name }}</td>
+            <td>{{ client.contact_person }}</td>
+            <td>{{ client.phone }}</td>
+            <td>{{ client.email }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

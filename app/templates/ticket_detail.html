@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Заявка #{{ ticket.id }} — {{ ticket.title }}</h1>
+
+<div class="panel">
+    <p><b>Клиент:</b> {{ ticket.client_name }}</p>
+    <p><b>Контактное лицо:</b> {{ ticket.contact_person }}</p>
+    <p><b>Телефон:</b> {{ ticket.phone }}</p>
+    <p><b>Email:</b> {{ ticket.email }}</p>
+    <p><b>Статус:</b> <span class="badge">{{ ticket.status }}</span></p>
+    <p><b>Приоритет:</b> {{ ticket.priority }}</p>
+    <p><b>Ответственный:</b> {{ ticket.responsible }}</p>
+    <p><b>Описание:</b></p>
+    <p>{{ ticket.description }}</p>
+</div>
+{% endblock %}
