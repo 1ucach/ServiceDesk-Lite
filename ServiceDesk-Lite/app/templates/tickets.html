@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Заявки</h1>
+
+<div class="panel">
+    <h2>Создать заявку</h2>
+    <form action="/tickets/add" method="post" class="form">
+        <select name="client_id" required>
+            {% for client in clients %}
+            <option value="{{ client.id }}">{{ client.name }}</option>
+            {% endfor %}
+        </select>
+        <input name="title" placeholder="Тема" required>
+        <textarea name="description" placeholder="Описание" required></textarea>
+        <select name="priority">
+            <option>Низкий</option>
+            <option selected>Средний</option>
+            <option>Высокий</option>
+        </select>
+        <input name="responsible" value="Иванов И.И.">
+        <button type="submit">Сохранить</button>
+    </form>
+</div>
+
+<div class="panel">
+    <h2>Список заявок</h2>
+    <table>
+        <tr><th>ID</th><th>Тема</th><th>Клиент</th><th>Статус</th><th>Приоритет</th><th>Ответственный</th></tr>
+        {% for ticket in tickets %}
+        <tr>
+            <td><a href="/tickets/{{ ticket.id }}">#{{ ticket.id }}</a></td>
+            <td>{{ ticket.title }}</td>
+            <td>{{ ticket.client_name }}</td>
+            <td><span class="badge">{{ ticket.status }}</span></td>
+            <td>{{ ticket.priority }}</td>
+            <td>{{ ticket.responsible }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Главная</h1>
+<div class="cards">
+    <div class="card"><span>Клиентов</span><strong>{{ clients_count }}</strong></div>
+    <div class="card"><span>Заявок</span><strong>{{ tickets_count }}</strong></div>
+    <div class="card"><span>В работе</span><strong>{{ active_count }}</strong></div>
+    <div class="card"><span>Решённых</span><strong>{{ solved_count }}</strong></div>
+</div>
+
+<div class="panel">
+    <h2>Последние заявки</h2>
+    <table>
+        <tr><th>ID</th><th>Тема</th><th>Статус</th><th>Приоритет</th></tr>
+        {% for ticket in tickets %}
+        <tr>
+            <td>#{{ ticket.id }}</td>
+            <td>{{ ticket.title }}</td>
+            <td><span class="badge">{{ ticket.status }}</span></td>
+            <td>{{ ticket.priority }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

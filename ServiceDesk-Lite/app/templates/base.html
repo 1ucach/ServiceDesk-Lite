@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>ServiceDesk Lite</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <div class="logo">ServiceDesk Lite</div>
+        <a href="/">Главная</a>
+        <a href="/clients/">Клиенты</a>
+        <a href="/tickets/">Заявки</a>
+        <a href="#">Отчёты</a>
+        <a href="#">Настройки</a>
+    </aside>
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+</div>
+</body>
+</html>
